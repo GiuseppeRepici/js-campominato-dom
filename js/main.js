@@ -44,7 +44,8 @@ function cellClick() {
         this.classList.toggle("bomba");
         clickfinali.innerHTML= `hai cliccato ${numeroClick} volte e dopo hai preso la bomba. <strong>GAME OVER!</strong>`;
         // chiamouna funzione che rimuove i click da TUTTE LE CELLE
-        rimuoviclick;
+        rimuoviclick();
+        // colore bombe
     } else{
         this.classList.toggle("azzurro");
         if(`${numeroClick}`===`${celleTotVincenti}`){
@@ -54,13 +55,14 @@ function cellClick() {
 }
 
 function rimuoviclick() {
-
     // queryselector all
     // per ogni cell 
     // remove di cellClick
+    const cellaremuve = document.querySelectorAll(`.flexcont .cella`);
+    console.log(cellaremuve);
     for(let i=0; i<difficolta.value; i++){
-        const cellaremuve = document.querySelector(`.flexcont :nth-child(${i})`);
-        cellaremuve.removeEventListener("click", cellClick);
+        cellaremuve[i].removeEventListener("click", cellClick);
+
     }
 }
 
