@@ -59,7 +59,7 @@ function rimuoviclick() {
     // per ogni cell 
     // remove di cellClick
     for(let i=0; i<difficolta.value; i++){
-        const cellaremuve = document.querySelector(`.cella :nth-child(${i})`);
+        const cellaremuve = document.querySelector(`.flexcont :nth-child(${i})`);
         cellaremuve.removeEventListener("click", cellClick);
     }
 }
