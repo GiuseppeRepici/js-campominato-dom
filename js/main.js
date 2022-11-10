@@ -26,28 +26,43 @@ btn.addEventListener("click", function() {
         gridContainer.append(newCell);
         newCell.dataset.numeroCella = i + 1;
         
-        newCell.addEventListener("click", function () {
-            const numeroDentro = parseInt( this.textContent );
-            numeroCella = +this.dataset.numeroCella;
-            numeroClick++;
-            console.log(numeroClick);
-            
-            if (listaNumRandom.includes(numeroCella)){
-                numeroClick--;
-                newCell.classList.toggle("bomba");
-                clickfinali.innerHTML= `hai cliccato ${numeroClick} volte e dopo hai preso la bomba. <strong>GAME OVER!</strong>`;
-                
-            } else{
-                newCell.classList.toggle("azzurro");
-                if(`${numeroClick}`===`${celleTotVincenti}`){
-                    clickfinali.innerHTML= `hai cliccato ${numeroClick} volte senza prendere la bomba. <strong>HAI VINTO!</strong>`;
-                }
-            }
-        })
+        newCell.addEventListener("click", cellClick);       
     }
     genListRandom();
     console.log(listaNumRandom);
-})
+});
+
+function cellClick() {
+
+    const numeroDentro = parseInt( this.textContent );
+    numeroCella = +this.dataset.numeroCella;
+    numeroClick++;
+    console.log(numeroClick);
+    
+    if (listaNumRandom.includes(numeroCella)){
+        numeroClick--;
+        this.classList.toggle("bomba");
+        clickfinali.innerHTML= `hai cliccato ${numeroClick} volte e dopo hai preso la bomba. <strong>GAME OVER!</strong>`;
+        // chiamouna funzione che rimuove i click da TUTTE LE CELLE
+        rimuoviclick;
+    } else{
+        this.classList.toggle("azzurro");
+        if(`${numeroClick}`===`${celleTotVincenti}`){
+            clickfinali.innerHTML= `hai cliccato ${numeroClick} volte senza prendere la bomba. <strong>HAI VINTO!</strong>`;
+        }
+    }
+}
+
+function rimuoviclick() {
+
+    // queryselector all
+    // per ogni cell 
+    // remove di cellClick
+    for(let i=0; i<difficolta.value; i++){
+        const cellaremuve = document.querySelector(`.cella :nth-child(${i})`);
+        cellaremuve.removeEventListener("click", cellClick);
+    }
+}
 
 function genListRandom() {
     while(listaNumRandom.length<16) {
