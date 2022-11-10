@@ -26,7 +26,7 @@ btn.addEventListener("click", function() {
         gridContainer.append(newCell);
         newCell.dataset.numeroCella = i + 1;
         
-        newCell.addEventListener("click", function logica() {
+        newCell.addEventListener("click", function () {
             const numeroDentro = parseInt( this.textContent );
             numeroCella = +this.dataset.numeroCella;
             numeroClick++;
