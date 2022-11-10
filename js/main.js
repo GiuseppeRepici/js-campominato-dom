@@ -7,6 +7,7 @@ let numeroClick = 0;
 let celleTotVincenti= 0;
 let numeroCella;
 
+
 btn.addEventListener("click", function() {
     listaNumRandom = [];
     gridContainer.innerHTML= "";
@@ -46,6 +47,8 @@ function cellClick() {
         // chiamouna funzione che rimuove i click da TUTTE LE CELLE
         rimuoviclick();
         // colore bombe
+        coloraBombe();
+
     } else{
         this.classList.toggle("azzurro");
         if(`${numeroClick}`===`${celleTotVincenti}`){
@@ -59,11 +62,20 @@ function rimuoviclick() {
     // per ogni cell 
     // remove di cellClick
     const cellaremuve = document.querySelectorAll(`.flexcont .cella`);
-    console.log(cellaremuve);
     for(let i=0; i<difficolta.value; i++){
         cellaremuve[i].removeEventListener("click", cellClick);
 
     }
+
+}
+
+function coloraBombe(){
+    for(let i=0; i<16; i++ ){
+        let x = i + 1;
+        const tutteLeBombe = document.querySelector(`.flexcont :nth-child(${listaNumRandom[+x]})`);
+        tutteLeBombe.classList.add("bomba");
+    }
+   
 }
 
 function genListRandom() {
