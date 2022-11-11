@@ -71,8 +71,7 @@ function rimuoviclick() {
 
 function coloraBombe(){
     for(let i=0; i<16; i++ ){
-        let x = i + 1;
-        const tutteLeBombe = document.querySelector(`.flexcont :nth-child(${listaNumRandom[+x]})`);
+        const tutteLeBombe = document.querySelector(`.flexcont :nth-child(${listaNumRandom[i]})`);
         tutteLeBombe.classList.add("bomba");
     }
    
