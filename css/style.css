@@ -29,3 +29,10 @@
 .bomba{
     background-color: red;
 }
+
+#clickresult{
+    background-color: blue;
+    color: gold;
+    font-size: 30px;
+    text-align: center;
+}

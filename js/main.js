@@ -9,6 +9,7 @@ let numeroCella;
 
 
 btn.addEventListener("click", function() {
+    clickfinali.innerHTML= "";
     listaNumRandom = [];
     gridContainer.innerHTML= "";
     difficolta = document.getElementById("selectdiff");
